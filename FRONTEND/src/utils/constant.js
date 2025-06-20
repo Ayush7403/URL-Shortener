@@ -1,1 +1,1 @@
-export const VITE_BASE_URL = "http://localhost:8000"
+export const VITE_BASE_URL = "https://url-shortener-backend-ebon.vercel.app"
