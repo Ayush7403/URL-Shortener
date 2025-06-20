@@ -3,7 +3,7 @@ import { VITE_BASE_URL } from "./constant";
 
 const axiosInstance = axios.create({
     baseURL:`${VITE_BASE_URL}`,
-    timeout:10000, //10s
+    timeout:100000, //10s
     withCredentials:true
 })
 
