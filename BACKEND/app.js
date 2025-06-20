@@ -13,10 +13,10 @@ import cookieParser from "cookie-parser";
 dotenv.config("./.env");
 
 const app = express();
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 8000;
 
 app.use(cors({
-  origin: "https://url-shortener-frontend-silk.vercel.app",
+  origin: "https://url-shortener-frontend-silk.vercel.app/",
   credentials:true
 }));
 
