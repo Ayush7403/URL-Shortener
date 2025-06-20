@@ -1,7 +1,8 @@
 import axios from "axios"
+import { VITE_BASE_URL } from "./constant";
 
 const axiosInstance = axios.create({
-    baseURL:`${import.meta.env.VITE_BASE_URL}`,
+    baseURL:`${VITE_BASE_URL}`,
     timeout:10000, //10s
     withCredentials:true
 })
