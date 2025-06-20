@@ -18,7 +18,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: "https://url-shortener-frontend-silk.vercel.app",
+  origin: "https://url-shortener-frontend-silk.vercel.app/",
   credentials: true,
 }));
 app.use(express.json());
