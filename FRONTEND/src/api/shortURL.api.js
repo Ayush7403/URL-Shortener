@@ -1,6 +1,9 @@
-import axiosInstance from "../utils/axiosInstance"
+import axiosInstance from "../utils/axiosInstance";
 
-export const createShortUrl = async (url,slug) =>{
-    const {data} = await axiosInstance.post("/api/create",{url,slug})
-    return data.shortUrl
-}
+export const createShortUrl = async (url, slug) => {
+  const { data } = await axiosInstance.post("/api/create", {
+    full_url: url,
+    ...(slug && { custom_slug: slug }), // add only if slug exists
+  });
+  return data.shortUrl;
+};
