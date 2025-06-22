@@ -3,13 +3,12 @@ import { createShortUrlWithoutUserService, createShortUrlWithUserService } from 
 import wrapAsync from "../utils/tryCatchWrapper.js";
 
 export const createShortUrl = wrapAsync(async (req, res) => {
-    const data = req.body;
+    const { full_url, custom_slug } = req.body;
     let shortUrl;
-    if(req.user){
-        shortUrl = await createShortUrlWithUserService(data.url, req.user._id,data.slug);
-    }else{
-        shortUrl = await createShortUrlWithoutUserService(data.url);
-        console.log("shortUrl nhi short_url aayega shayad ")
+    if (req.user) {
+        shortUrl = await createShortUrlWithUserService(full_url, req.user._id, custom_slug);
+    } else {
+        shortUrl = await createShortUrlWithoutUserService(full_url);
     }
     res.status(200).json({ shortUrl: `${process.env.APP_URL}/${shortUrl}` });
 
@@ -17,7 +16,7 @@ export const createShortUrl = wrapAsync(async (req, res) => {
 
 export const redirectFromShortURL = wrapAsync(async (req, res) => {
     const { id } = req.params;
-    const url = await getshortUrl(id); 
+    const url = await getshortUrl(id);
     if (!url) throw new Error("Short URL is not found");
     res.redirect(url.full_url);
 });
